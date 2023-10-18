@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To-Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: pink;
+      margin: 0;
+      background-image: url(image/B.jpeg);
+   background-size: cover;
+   
+    }
+
+    #wrapper {
+        height: 500px;
+        width: 400px;
+        margin: 200px auto;
+        background-color: #1f2029;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        color: floralwhite;
+        letter-spacing: 1px;
+    }
+
+    input {
+        border-radius: 5px;
+        border: 2px solid black;
+        margin-top: 30px;
+        height: 2.5em;
+        width: 230px;
+        padding-left: 10px;
+    }
+
+    input:active {
+        border: none;
+    }
+
+    button {
+        background-color: pink;
+        border-radius: 5px;
+        height: 2.5em;
+        font-weight: 600;
+        padding: 0 30px;
+        letter-spacing: 1px;
+        border: none;
+        color: #102770;
+        cursor: pointer;
+    }
+
+    button:hover {
+        display: inline-block;
+    }
+
+    #todolist {
+        color: white;
+        font-size: 28px;
+        margin-top: 10px;
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .task {
+        flex: 1;
+    }
+
+    .remove-button {
+        color: red;
+        cursor: pointer;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    #errorMessage {
+        color: red;
+        text-align: center;
+        display: none;
+    }
+</style>
+<body>
+<div id="wrapper">
+    <h2>To-do List</h2>
+    <input type="text" id="input" placeholder="Enter a task">
+    <button id="add">Add</button>
+    <div id="errorMessage">Please enter a ListItems.</div>
+    <ul id="todolist"></ul>
+</div>
+ <div style="text-align: center;margin-top: 20px;font-size:25px;">
+  <a href="index.html">Back to webpage</a>
+
+<script>
+document.getElementById("add").addEventListener("click", function() {
+        var taskText = document.getElementById("input").value;
+
+ if (taskText.trim() === "") {
+            document.getElementById("errorMessage").style.display = "block";
+            return;
+        } else {
+            document.getElementById("errorMessage").style.display = "none";
+        }
+
+  var listItem = document.createElement("li");
+
+   var taskSpan = document.createElement("span");
+        taskSpan.classList.add("task");
+        taskSpan.textContent = taskText;
+
+  var removeButton = document.createElement("span");
+        removeButton.classList.add("remove-button");
+        removeButton.textContent = "X";
+
+  removeButton.addEventListener("click", function() {
+            listItem.remove();
+        });
+
+     listItem.appendChild(taskSpan);
+        listItem.appendChild(removeButton);
+
+        // Add the list item to the to-do list
+        document.getElementById("todolist").appendChild(listItem);
+
+        // Clear the input field
+        document.getElementById("input").value = "";
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>

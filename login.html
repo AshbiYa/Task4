@@ -1,0 +1,135 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <title>Login Page</title>
+    <style>
+        body {
+            background-image: url('image/A.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            width: 370px;
+            margin: 25vh 0 auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: floralwhite;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+
+        input {
+            width: 85%;
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .input-group input.success {
+            border: 1px solid green;
+        }
+
+        .input-group input.error {
+            border: 1px solid red;
+        }
+
+        button {
+            width: 70%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        .error-text {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="login">
+            <h2>Login here</h2>
+            <div class="input-group">
+      <label for="email-field">Email Address</label>
+           <input type="email" id="email-field">
+   <div class="email-error error-text"></div>
+            </div>
+     <div class="input-group">
+     <label for="password">Password</label>
+     <input type="password" id="password" name="password">
+       <div class="password-error error-text"></div>
+    
+      <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+    <script>
+   document.getElementById("login").addEventListener("submit", function(event) {
+  event.preventDefault();
+            var email = document.getElementById("email-field").value;
+     var password = document.getElementById("password").value;
+   var emailField = document.getElementById("email-field");
+   var passwordField = document.getElementById("password");
+  var emailError = document.querySelector(".email-error");
+            var passwordError = document.querySelector(".password-error");
+
+  emailField.classList.remove("success", "error");
+  
+  passwordField.classList.remove("success", "error");
+  
+   emailError.textContent = "";
+   passwordError.textContent = "";
+
+   if (email.trim() === "") {
+   emailField.classList.add("error");
+   emailError.textContent = "Please enter your email address.";
+            }
+    else {
+      emailField.classList.add("success");
+            }
+
+   if (password.trim() === "") {
+       passwordField.classList.add("error");
+     passwordError.textContent = "Enter a password.";
+      } 
+  else if (password.length < 8) {
+   passwordField.classList.add("error");
+    passwordError.textContent = "Incorrect password (must be at least 8 characters).";
+            } 
+    else {
+    passwordField.classList.add("success");
+   window.location.href = "To-do.html";
+   }
+   });         
+            
+    </script>
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
